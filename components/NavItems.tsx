@@ -49,7 +49,7 @@ const NavItems = ({ handleClick }: { handleClick?: () => void}) => {
 
                     <button onClick={()=>{console.log('logout')
                     }} className="cursor-poiter" >
-                        <img src="/assets/icon/logout.svg" alt="logout" className="size-6" />
+                        <img src="/assets/icons/logout.svg" alt="logout" className="size-6" />
                     </button>
                 </footer>
         </section>

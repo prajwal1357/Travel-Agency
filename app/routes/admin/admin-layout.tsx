@@ -1,7 +1,6 @@
 import {Outlet, redirect} from "react-router";
 import {SidebarComponent} from "@syncfusion/ej2-react-navigations";
-import { NavItems } from "components";
-import MobileSidebar from "components/MobileSidebar";
+import { NavItems, MobileSidebar } from "components";
 
 
 const AdminLayout = () => {
