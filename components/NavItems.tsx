@@ -1,59 +1,67 @@
-import {Link, NavLink, useLoaderData, useNavigate} from "react-router";
-import {sidebarItems} from "~/constants";
+import { Link, NavLink, useLoaderData, useNavigate } from "react-router";
+import { logoutUser } from "~/appwrite/auth";
+import { sidebarItems } from "~/constants";
 import { cn } from "~/lib/utils";
 
+const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
+  const user = useLoaderData();
+  const navigate = useNavigate();
 
-const NavItems = ({ handleClick }: { handleClick?: () => void}) => {
-    // const user = useLoaderData();
-    // const navigate = useNavigate();
+  const handleLogout = async () => {
+    await logoutUser();
+    navigate("/sign-in");
+  };
 
-    const user={
-        name: "John Doe",
-        email: "anything@gmail.com",
-        imageUrl: "https://i.pravatar.cc/150?img=3"
-    }
+  return (
+    <section className="nav-items">
+      <Link to="/" className="link-logo">
+        <img src="/assets/icons/logo.svg" alt="logo" className="size-[30px]" />
+        <h1>Tourvisto</h1>
+      </Link>
 
-    return (
-        <section className="nav-items">
-            <Link to='/' className="link-logo">
-                <img src="/assets/icons/logo.svg" alt="logo" className="size-[30px]" />
-                <h1>Tourvisto</h1>
-            </Link>
+      <nav>
+        {sidebarItems.map(({ id, href, icon, label }) => (
+          <NavLink to={href} key={id}>
+            {({ isActive }: { isActive: boolean }) => (
+              <div
+                className={cn("group nav-item", {
+                  "bg-primary-100 !text-white": isActive,
+                })}
+                onClick={handleClick}
+              >
+                <img
+                  src={icon}
+                  alt={label}
+                  className={`group-hover:brightness-0 size-0 group-hover:invert ${isActive ? "brightness-0 invert" : "text-dark-200"}`}
+                />
+                {label}
+              </div>
+            )}
+          </NavLink>
+        ))}
+      </nav>
 
-             <nav>
-                    {sidebarItems.map(({ id, href, icon, label }) => (
-                        <NavLink to={href} key={id}>
-                            {({ isActive }: { isActive: boolean }) => (
-                                <div className={cn('group nav-item', {
-                                    'bg-primary-100 !text-white': isActive
-                                })} onClick={handleClick}>
-                                    <img
-                                        src={icon}
-                                        alt={label}
-                                        className={`group-hover:brightness-0 size-0 group-hover:invert ${isActive ? 'brightness-0 invert' : 'text-dark-200'}`}
-                                    />
-                                    {label}
-                                </div>
-                            )}
-                        </NavLink>
-                    ))}
-                </nav>
+      <footer className="nav-footer">
+        <img
+          src={user?.imageUrl || "/assets/images/david.webp"}
+          alt={user?.name || "David"}
+          referrerPolicy="no-referrer"
+        />
 
-                <footer className="nav-footer">
-                    <img src={user?.imageUrl || '/assets/image/davidwebp'} alt="" />
+        <article>
+          <h2>{user?.name}</h2>
+          <p> {user?.email} </p>
+        </article>
 
-                    <article>
-                        <h2>{user?.name}</h2>
-                        <p> {user?.email} </p>
-                    </article>
+        <button onClick={handleLogout} className="!cursor-poiter">
+          <img
+            src="/assets/icons/logout.svg"
+            alt="logout"
+            className=" w-6 h-6 cursor-pointer transform transition-transform duration-300 ease-in-out hover:scale-110" />
+        </button>
+      </footer>
+    </section>
+  );
+};
 
-                    <button onClick={()=>{console.log('logout')
-                    }} className="cursor-poiter" >
-                        <img src="/assets/icons/logout.svg" alt="logout" className="size-6" />
-                    </button>
-                </footer>
-        </section>
-    )
-}
-
-export default NavItems
+export default NavItems;

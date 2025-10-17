@@ -282,21 +282,30 @@
       @apply text-base md:text-2xl font-bold text-dark-100;
     }
   }
-  .nav-footer {
-    @apply flex items-center gap-2.5 pb-8;
-    img {
-      @apply size-10 rounded-full aspect-square;
+    .sidebar {
+  @apply flex flex-col h-full; /* Make sidebar full height and column layout */
+}
+
+.nav-footer {
+  @apply mt-auto flex items-center gap-2.5 pb-8;
+
+  img {
+    @apply size-10 rounded-full aspect-square;
+  }
+
+  article {
+    @apply flex flex-col gap-[2px] max-w-[115px];
+
+    h2 {
+      @apply text-sm md:text-base font-semibold text-dark-200 truncate;
     }
-    article {
-      @apply flex flex-col gap-[2px] max-w-[115px];
-      h2 {
-        @apply text-sm md:text-base font-semibold text-dark-200 truncate;
-      }
-      p {
-        @apply text-gray-100 text-xs md:text-sm font-normal truncate;
-      }
+
+    p {
+      @apply text-gray-100 text-xs md:text-sm font-normal truncate;
     }
   }
+}
+
   .mobile-sidebar {
     @apply lg:hidden flex flex-col gap-5;
     header {
