@@ -31,7 +31,7 @@ const AdminLayout = () => {
                 <SidebarComponent width={270} enableGestures={false}>
                     <NavItems />
                 </SidebarComponent>
-            </aside>
+            </aside> 
 
             <aside className="children">
                 <Outlet />

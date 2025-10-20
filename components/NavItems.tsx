@@ -14,11 +14,13 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
 
   return (
     <section className="nav-items">
-      <Link to="/" className="link-logo">
-        <img src="/assets/icons/logo.svg" alt="logo" className="size-[30px]" />
-        <h1>Tourvisto</h1>
-      </Link>
-
+      <Link to='/' className="link-logo flex items-center">
+                          <img
+                              src="/assets/icons/logo.png"
+                              alt="logo"
+                              className="h-10 w-auto md:h-12 object-contain md:my-8"
+                          />
+                      </Link>
       <nav>
         {sidebarItems.map(({ id, href, icon, label }) => (
           <NavLink to={href} key={id}>
