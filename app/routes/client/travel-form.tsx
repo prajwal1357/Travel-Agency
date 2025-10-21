@@ -257,7 +257,7 @@ const TravelForm = ({ loaderData }: Route.ComponentProps) => {
               </span>
             </ButtonComponent>
           </footer>
-          {createdTripId && !loading || (
+          {createdTripId && !loading && (
             <div className="flex justify-center items-center mt-4 w-full!">
               <button
                 type="button"
