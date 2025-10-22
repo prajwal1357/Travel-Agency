@@ -65,7 +65,7 @@ export const loginWithGoogle = async () => {
     try {
         await account.createOAuth2Session(
             OAuthProvider.Google,
-           "https://jyoluxe.vercel.app",
+            "https://jyoluxe.vercel.app",      
             `${window.location.origin}/404`
         );
     } catch (error) {
