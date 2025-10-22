@@ -10,9 +10,9 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start gap-2">
           <div className="flex items-center gap-2">
             <img
-              src="/public/assets/icons/logo.png"
-              alt="App Logo"
-              className="w-32 h-10 size-32 rounded-full object-contain"
+               src="/public/assets/icons/logo.png"
+                alt="logo"
+                className="h-8 w-auto md:h-12 object-contain md:my-8"
             />
           </div>
 
